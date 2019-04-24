@@ -21,14 +21,14 @@ $(function () {
         fields: {
             password: {
             	validators: {
-            		notEmpty: {//检测非空,radio也可用
+            		notEmpty: {
                         message: 'password must input'
                     }
             	}
             },
             password2: {
             	validators: {
-            		notEmpty: {//检测非空,radio也可用
+            		notEmpty: {
                         message: 'password must input'
                     },
             		identical: {
@@ -39,10 +39,10 @@ $(function () {
             }
         }
     });
-    $("#btn-test").click(function () {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
-        $("#form-register").bootstrapValidator('validate');//提交验证
-        if ($("#form-test").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-            alert("yes");//验证成功后的操作，如ajax
+    $("#btn-test").click(function () {
+        $("#form-register").bootstrapValidator('validate');
+        if ($("#form-test").data('bootstrapValidator').isValid()) {
+            alert("yes");
         }
     });
 });
