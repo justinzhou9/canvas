@@ -105,7 +105,7 @@
 
         <div class="wrapper">
             <!--header section-->
-            <section class="colored-section hero-header">
+            <section {% if noc %} class="colored-section" {% else %} class="colored-section hero-header" {% endif %}>
                  {% block content %}
                 <div class="container">
 

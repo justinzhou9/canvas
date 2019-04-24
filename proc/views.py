@@ -76,7 +76,7 @@ def getStudentsInfo(request):
 
         stuList.append({"email":email,"name":student.name,"course_id":courses.course_id,"course_name":courses.course_name,"course_desc":courses.course_description,
                        "professor_email":professors.email,"exam_no":exam_no,"grade":grade})
-    return render(request,'showStudent.html',{'infoList':stuList,"title":"Student Info"})
+    return render(request,'showStudent.html',{'infoList':stuList,"title":"Student Info","noc":"1"})
 
 def getRestPasswd(request):
     userType=request.session.get("userType")
@@ -102,7 +102,7 @@ def getHomeworkList(request):
         hwList = models.Homework.objects.filter(course_id=c.teaching_team_id,sec_no=secs.sec_no)
         for hw in hwList:
             hws.append({"course_id":hw.course_id,"sec_no":hw.sec_no,"hw_no":hw.hw_no,"hw_details":hw.hw_details})
-    return render(request,"showHomework.html",{"infoList":hws})
+    return render(request,"showHomework.html",{"infoList":hws,"noc":"1"})
 
 def setHomework(request):
     email=request.session.get("email")
@@ -164,7 +164,7 @@ def getExamList(request):
         examList = models.Exams.objects.filter(course_id=c.teaching_team_id,sec_no=secs.sec_no)
         for ex in examList:
             exs.append({"course_id":cs.course_id,"sec_no":ex.sec_no,"exam_no":ex.exam_no,"exam_details":ex.exam_details})
-    return render(request,"showExam.html",{"infoList":exs})
+    return render(request,"showExam.html",{"infoList":exs,"noc":"1"})
 
 def setAddExam(request):
     course_id = request.GET.get('course')
@@ -210,7 +210,7 @@ def getProfessorList(request):
             result.append({"email":email,"name":profs.name,"office":office,"course_id":course_id,"course_name":courses.course_name,
                            "course_desc":courses.course_description,"sec_no":section_no,"student_name":student.name,
                            "hw_no":hw.hw_no,"hw_grade":hwg_grade,"exam_no":exam.exam_no,"exms_grade":grade})
-    return render(request,"showProfessor.html",{"title":"Professor Info","proList":result})
+    return render(request,"showProfessor.html",{"title":"Professor Info","proList":result,"noc":"1"})
 
 
 def getImport(request):
