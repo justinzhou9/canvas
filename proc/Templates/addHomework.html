@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+
+{% block title %}  Login    {% endblock %}
+
+ {% block userMessage %}
+<script type="text/javascript" language="javascript">
+$(function () {
+
+        $('#course').change(function () {
+            var courseId = $("#course").val();
+
+            $("#section").empty().append('<option value="default">Select Section</option>');
+            // 跳转
+            window.location.href="{% url 'getSection' %}?courseId="+courseId+"
+        });
+
+    })
+</script>
+ {% endblock %}
+
+{% block content %}
+
+
+
+		    <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+
+				<form class="form-horizontal" role="form" action="{% url 'addHomework' %}" method="post">
+                    {% csrf_token %}
+
+					<div class="form-group">
+						<label for="course" class="col-sm-4 control-label">Course</label>
+						<div class="col-sm-8">
+						<select id="course" name="course" class="form-control" >
+							<option value="default">Select Course</option>
+							{% for c in courses %}
+							<option value="{{c.course_id}}" >{{c.course_id}}_{{c.course_name}}</option>
+						{% endfor %}
+						</select>
+							</div>
+
+					</div>
+					<div class="form-group">
+						<label for="section" class="col-sm-4 control-label">Section</label>
+						<div class="col-sm-8">
+							<select id="section" name="section" class="form-control" >
+								<option value="default">Select ection</option>
+								{% for s in sections %}
+							<option value="{{s.sec_no}}" >{{s.sec_no}}</option>
+								{% endfor %}
+
+						</select>
+
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="hw_details" class="col-sm-4 control-label">homework details</label>
+						<div class="col-sm-8">
+							<textarea id="hw_details" name="hw_details" class="form-control">
+
+
+							</textarea>
+
+						</div>
+					</div>
+                    <div class="form-group">
+
+
+
+                    </div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="submit" class="btn btn-default">Submit</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+							<button type="button" class="btn btn-default"onclick="javascript:history.back(-1);">Back</button>
+						</div>
+					</div>
+
+
+
+				</form>
+
+
+
+
+
+
+			</div>
+			</div>
+			</div>
+
+
+{% endblock %}

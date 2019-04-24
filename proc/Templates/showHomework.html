@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block title %}  Login    {% endblock %}
+
+
+{% block content %}
+
+
+
+		    <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+<table  id="info_list_table" class="display table  table-condensed" data-toggle="table" data-show-columns="true"
+               >
+	<h1>{{title}}</h1>
+					<thead>
+						<tr>
+							<th><input type="checkbox" id="checkAll" name="checkAll" /></th>
+							<th data-field="area" data-align="center" data-sortable="true">Course ID</th>
+							<th data-field="area" data-align="center" data-sortable="true">Section No</th>
+							<th data-field="area" data-align="center" data-sortable="true">Homework No</th>
+							<th data-field="area" data-align="center" data-sortable="true">Homework Details</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for list in infoList %}
+
+							<tr id="data_${stat.index}" class="main_trbg"
+								onMouseOver="move(this);" onMouseOut="out(this);">
+
+								<td><input type="checkbox" id="box_${stat.index}"
+									value="${list.course_id}"></td>
+							<td>{{list.course_id }}</td>
+								<td>{{list.sec_no }}</td>
+								<td>{{list.hw_no}}</td>
+								<td>{{list.hw_details }}</td>
+
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+
+			</div>
+			</div>
+			</div>
+
+
+{% endblock %}

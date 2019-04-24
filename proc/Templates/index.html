@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> {% block title %}  Home    {% endblock %}      </title>
+        <meta name="description" content="Love UI Kit." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         {% block linkCSS %}
+        <!--Bootstrap 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <!--icons-->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--vendors-->
+        <link rel="stylesheet" href="/static/js/vendors/daterangepicker/daterangepicker.css" />
+        <!--custom css-->
+        <link rel="stylesheet" href="/static/css/components.css" />
+        <link rel="stylesheet" href="/static/css/colors.css" />
+        <link rel="stylesheet" href="/static/css/demo.css" />
+         {% endblock %}
+    </head>
+    <body>
+    {% block userMessage %}
+        <script type="text/javascript" language="javascript">
+        {% if message %}
+        alert("{{ message }}")
+        {% endif %}
+        </script>
+    {% endblock %}
+
+        <!--header-->
+        <nav class="navbar navbar-toggleable-md fixed-top navbar-transparent sticky-navigation-alt">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="ion-grid"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="/static/img/logo-w60.png" class="nav-brand-logo" />
+
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+
+                    <li  class="nav-item">
+                        {% if request.session.name %}
+                        <a class="nav-link page-scroll" href="{% url 'setLoginOut' %}">{{ request.session.name  }}</a>
+                        {% else %}
+                        <a class="nav-link page-scroll" href="{% url 'showLogin' %}"> Login</a>
+                        {% endif %}
+                    </li>
+                    <li  class="nav-item"> <a class="nav-link page-scroll" href="{% url 'index' %}"> Home </a></li>
+                    {% if request.session.userType == '1' %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="studentInfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Info
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="studentInfo">
+                            <a class="dropdown-item page-scroll" href="{% url 'getStudentsInfo' %}">Student</a>
+
+                            <a class="dropdown-item page-scroll" href="{% url 'getRestPasswd' %}">Rest Password</a>
+                        </div>
+                    </li>
+                    {% endif %}
+
+                     {% if request.session.userType == '2' %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="proInfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Info
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="proInfo">
+                            <a class="dropdown-item page-scroll" href="{% url 'getProfessorList' %}">Professor</a>
+
+                            <a class="dropdown-item page-scroll" href="{% url 'getHomeworkList' %}">List HomeWork</a>
+                            <a class="dropdown-item page-scroll" href="{% url 'setHomework' %}">Add HomeWork</a>
+
+                            <a class="dropdown-item page-scroll" href="{% url 'getExamList' %}">List Exam</a>
+                            <a class="dropdown-item page-scroll" href="{% url 'setExam' %}">Add Exam</a>
+                        </div>
+                    </li>
+
+
+                     {% endif %}
+
+
+
+
+                     {% if request.session.userType == '3' %}
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="{% url 'getImport' %}">import</a>
+                    </li>
+                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-title="Share" target="_blank" href="#"><em class="fa fa-facebook"></em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-title="Tweet" target="_blank" href="#"><em class="fa fa-twitter"></em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-title="Share" target="_blank" href="#"><em class="fa fa-linkedin"></em></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+                 {% block content %}
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="brand">
+
+                                <h1 class="text-white">Wired UI Kit</h1>
+                                <h5 class="text-uppercase mb-5">
+                                    Hello, &nbsp&nbsp Welcome to Canvas Path Center
+                                </h5>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                 {% endblock %}
+
+
+
+{% block importScripts %}
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+        <!--vendors-->
+        <script src="/static/js/vendors/moment.min.js"></script>
+        <script src="/static/js/vendors/daterangepicker/daterangepicker.js"></script>
+        <!--custom js-->
+        <script src="/static/js/app.js"></script>
+      {% endblock %}
+    </body>
+</html>

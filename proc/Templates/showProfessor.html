@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+
+{% block title %}  Login    {% endblock %}
+
+
+{% block content %}
+
+
+
+		    <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+<table  id="info_list_table" class="display table  table-condensed" data-toggle="table" data-show-columns="true" bgcolor="#ffffff"
+               >
+	<h1>{{title}}</h1>
+					<thead>
+						<tr>
+							<th><input type="checkbox" id="checkAll" name="checkAll" /></th>
+							<th data-field="area" data-align="center" data-sortable="true">Professor Email</th>
+							<th data-field="area" data-align="center" data-sortable="true">Name</th>
+							<th data-field="build" data-align="center" data-sortable="true">Office</th>
+							<th data-field="area" data-align="center" data-sortable="true">Course ID</th>
+							<th data-field="area" data-align="center" data-sortable="true">Course Name</th>
+							<th data-field="build" data-align="center" data-sortable="true">Course Description</th>
+							<th data-field="build" data-align="center" data-sortable="true">Section No</th>
+							<th data-field="build" data-align="center" data-sortable="true">Student Email</th>
+							<th data-field="build" data-align="center" data-sortable="true">Student Name</th>
+							<th data-field="build" data-align="center" data-sortable="true">Homework No</th>
+							<th data-field="build" data-align="center" data-sortable="true">Homework Detail</th>
+							<th data-field="build" data-align="center" data-sortable="true">Homework Grade</th>
+							<th data-field="build" data-align="center" data-sortable="true">Exam No</th>
+							<th data-field="build" data-align="center" data-sortable="true">Exam Detail</th>
+							<th data-field="build" data-align="center" data-sortable="true">Exam Grade</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for list in proList %}
+
+							<tr id="data_${stat.index}" class="main_trbg"
+								onMouseOver="move(this);" onMouseOut="out(this);">
+
+								<td><input type="checkbox" id="box_${stat.index}"
+									value="${list.email}"></td>
+								<td>{{list.email}}</td>
+								<td>{{list.name}}</td>
+								<td>{{list.office}}</td>
+								<td>{{list.course_id}}</td>
+								<td>{{list.course_name}}</td>
+								<td>{{list.course_description}}</td>
+								<td>{{list.sec_no}}</td>
+								<td>{{list.student_email}}</td>
+								<td>{{list.student_name</td>
+								<td>{{list.hw_no}}</td>
+								<td>{{list.hw_grade}}</td>
+								<td>{{list.exam_NO}}</td>
+								<td>{{list.exam_grade}}</td>
+
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+
+			</div>
+			</div>
+			</div>
+
+
+{% endblock %}

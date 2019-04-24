@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+
+{% block title %}  Login    {% endblock %}
+
+
+{% block content %}
+
+
+
+		    <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+
+				<form class="form-horizontal" role="form" action="{% url 'addExam' %}" method="post">
+                    {% csrf_token %}
+
+				<div class="form-group">
+						<label for="course" class="col-sm-4 control-label">Course</label>
+						<div class="col-sm-8">
+						<select id="course" name="course" class="form-control" >
+							<option value="default">Select Course</option>
+							{% for c in courses %}
+							<option value="{{c.course_id}}" >{{c.course_id}}_{{c.course_name}}</option>
+						{% endfor %}
+						</select>
+							</div>
+
+					</div>
+					<div class="form-group">
+						<label for="section" class="col-sm-4 control-label">Section</label>
+						<div class="col-sm-8">
+							<select id="section" name="section" class="form-control" >
+								<option value="default">Select ection</option>
+								{% for s in sections %}
+							<option value="{{s.sec_no}}" >{{s.sec_no}}</option>
+								{% endfor %}
+
+						</select>
+
+							</div>
+					</div>
+
+					<div class="form-group">
+						<label for="exam_details" class="col-sm-4 control-label">Section</label>
+						<div class="col-sm-8">
+						</div>
+					</div>
+							<div class="form-group">
+						<label for="exam_details" class="col-sm-4 control-label">Exam Details</label>
+						<div class="col-sm-8">
+						<input type="text" class="form-control" id="exam_details" name="exam_details" placeholder="exam details" />
+							</div>
+						</div>
+
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="submit" class="btn btn-default">Submit</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+							<button type="button" class="btn btn-default"onclick="javascript:history.back(-1);">Back</button>
+						</div>
+					</div>
+
+				</form>
+
+
+                    </div>
+
+			</div>
+			</div>
+
+
+{% endblock %}
