@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 
-{% block title %}  Login    {% endblock %}
+{% block title %}  Student List    {% endblock %}
 
 
 {% block content %}
@@ -15,7 +15,6 @@
 	<h1>{{title}}</h1>
 					<thead>
 						<tr>
-							<th><input type="checkbox" id="checkAll" name="checkAll" /></th>
 
 							<th data-field="area" data-align="center" data-sortable="true">Email</th>
 							<th data-field="area" data-align="center" data-sortable="true">Name</th>
@@ -35,8 +34,6 @@
 							<tr id="data_${stat.index}" class="main_trbg"
 								onMouseOver="move(this);" onMouseOut="out(this);">
 
-								<td><input type="checkbox" id="box_${stat.index}"
-									value="${list.email}"></td>
 								<td>{{list.email}}</td>
 								<td>{{list.name}}</td>
 								<td>{{list.course_id }}</td>

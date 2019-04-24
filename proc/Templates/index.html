@@ -103,11 +103,13 @@
             </div>
         </nav>
 
-
+        <div class="wrapper">
+            <!--header section-->
+            <section class="colored-section hero-header">
                  {% block content %}
                 <div class="container">
 
-                    <div class="row">
+                    <div  class="mt-5" id="navigation">
                         <div class="col-md-8 offset-md-2">
                             <div class="brand">
 
@@ -122,7 +124,10 @@
 
                 </div>
                  {% endblock %}
+            </section>
 
+
+        </div>
 
 
 {% block importScripts %}

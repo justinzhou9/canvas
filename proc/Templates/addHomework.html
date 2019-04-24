@@ -2,21 +2,7 @@
 
 {% block title %}  Login    {% endblock %}
 
- {% block userMessage %}
-<script type="text/javascript" language="javascript">
-$(function () {
 
-        $('#course').change(function () {
-            var courseId = $("#course").val();
-
-            $("#section").empty().append('<option value="default">Select Section</option>');
-            // 跳转
-            window.location.href="{% url 'getSection' %}?courseId="+courseId+"
-        });
-
-    })
-</script>
- {% endblock %}
 
 {% block content %}
 
