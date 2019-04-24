@@ -2,7 +2,7 @@
 need to install Flask, django 2.0, and pymysql in project interpreter
 
 1. use command in terminal: python manage.py makemigrations 
-    This will migrate all the tables I created from the code to local mysql (need to update admin and password)
+    This will migrate all the tables I created from the code to local mysql (need to update admin and password in setting.py)
 2. use command : python manage.py createsuperuser
     This will create an account for administrator so that I can upload cvs files 
 3. use command : python manage.py runserver
